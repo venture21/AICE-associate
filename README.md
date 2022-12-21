@@ -125,6 +125,19 @@ model.fit(train_x, train_y)
 pred_y = model.predict(test_x)
 ```
 
+## 2-9. 머신러닝 모델 - 분류 : LGBM
+```
+pip install lightgbm
+```
+
+```
+from lightgbm import LGBMClassifier
+
+model = LGBMClassifier(n_estimators=3, random_state=42) 
+model.fit(train_x, train_y)
+pred_y = model.predict(test_x)
+```
+
 
 # 4. Tensorflow(Keras)
 
@@ -193,7 +206,17 @@ model.compile(loss='sparse_categorical_crossentropy',
 model.summary() 
 ```
 
+## 4-4 딥러닝 모델 성능 평가 - loss 그래프 그리기
 
+```
+plt.plot(history.history['accuracy'])
+plt.plot(history.history['val_accuracy'])
+plt.title('Accuracy')
+plt.xlabel('Epochs')
+plt.ylabel('Acc')
+plt.legend(['acc', 'val_acc'])
+plt.show()
+```
 
 
 
