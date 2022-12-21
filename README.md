@@ -39,3 +39,80 @@ train_x, test_x, train_y, test_y = train_test_split(df.drop('label', axis=1), df
 # 데이터셋 분할 후, 분할된 데이터셋 확인
 train_x.shape, test_x.shape, train_y.shape, test_y.shape
 ```
+## 7. 머신러닝 모델 - 랜덤포레스트 분류기
+```
+from sklearn.ensemble import RandomForestClassifier
+
+model = RandomForestClassifier(random_state=123)
+model.fit(train_x, train_y)
+pred_y = model.predict(test_y)
+```
+## 8. 딥러닝 모델 - 심층신경망 만들기(회귀 모델)
+```
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense
+from tensorflow.random import set_seed
+
+set_seed(100)
+
+col_num = train_x.shape[1]
+
+model = Sequential()
+model.add(Dense(64, activation='relu', input_shape=(col_num,)))
+model.add(Dense(64, activation='relu'))
+model.add(Dense(1))
+
+model.compile(loss='mse',
+              optimizer='adam',
+              metrics=['mae'])      
+model.summary()
+```
+## 9. 딥러닝 모델 - 심층신경망 만들기(이진 분류 모델)
+```
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense
+from tensorflow.random import set_seed
+
+set_seed(100)
+
+col_num = train_x.shape[1]
+
+model = Sequential()
+model.add(Dense(64, activation='relu', input_shape=(col_num,)))
+model.add(Dense(64, activation='relu'))
+model.add(Dense(1, activation='sigmoid'))
+
+model.compile(loss='binary_crossentropy',
+              optimizer='adam',
+              metrics=['accuracy'])      
+model.summary()
+```
+## 10. 딥러닝 모델 - 심층신경망 만들기(다중 분류 모델)
+```
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense
+from tensorflow.random import set_seed
+
+set_seed(100)
+class_num = 2
+
+# 회귀 모델의 경우
+col_num = train_x.shape[1]
+
+model = Sequential()
+model.add(Dense(64, activation='relu', input_shape=(col_num,)))
+model.add(Dense(64, activation='relu'))
+model.add(Dense(class_num, activation='softmax'))
+
+model.compile(loss='sparse_categorical_crossentropy',
+              optimizer='adam',
+              metrics=['accuracy'])      
+model.summary() 
+```
+
+
+
+
+
+
+
