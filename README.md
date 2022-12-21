@@ -109,7 +109,7 @@ plt.show()
 ```python
 from sklearn.metrics import classification_report
 
-classification_report(true_y, pred_y, target_names=target_names)
+classification_report(test_y, pred_y, target_names=target_names)
 ```
 
 ## 2-5. 머신러닝 모델 - 분류 : 로지스틱 회귀
