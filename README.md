@@ -215,6 +215,29 @@ model.fit(train_x, train_y)
 pred_y = model.predict(test_x)
 ```
 
+## 2-15. 머신러닝 모델 - 회귀 : Voting Ensemble Model
+```python
+from sklearn.linear_model import LinearRegression as lr
+from sklearn.ensemble import RandomForestRegressor as rfr
+from sklearn.ensemble import GradientBoostingRegressor as grb
+from xgboost import XGBRegressor as xgb
+
+import joblib
+import time
+
+model_list=[linearModel(), randomForest(), GradientBoosting(), XGB()]
+
+# 다차원 배열을 1차원 배열로 만들기
+train_y = train_y.to_numpy().flatten()
+
+model_result = []
+for i in range(len(model_list)):
+    model = model_list[i]
+    model.fit(train_x, train_y)
+    pred_y = model.predict(test_x)
+    model_result.append(model)
+```
+
 # 3. Matplotlib & Seaborn
 
 
