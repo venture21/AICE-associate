@@ -52,7 +52,7 @@ train_x, test_x, train_y, test_y = train_test_split(df_x, df_y, test_size=0.2, r
 train_x, test_x, train_y, test_y = train_test_split(df.drop('label', axis=1), df['label'], test_size=0.2, random_state=42)
 
 # Feature데이터와 label데이터가 하나의 데이터프레임에 같이 있는 경우, (레이블까지 고려하여) 데이터셋 균등하게 나누기
-train_x, test_x, train_y, test_y = train_test_split(df.drop('label', axis=1), df['label'], test_size=0.2, **stratify=df['label']**, random_state=42)
+train_x, test_x, train_y, test_y = train_test_split(df.drop('label', axis=1), df['label'], test_size=0.2, stratify=df['label'], random_state=42)
 
 # 데이터셋 분할 후, 분할된 데이터셋 확인
 train_x.shape, test_x.shape, train_y.shape, test_y.shape
@@ -66,6 +66,7 @@ scaler = MinMaxScaler()
 train_x = scaler.fit_transform(train_x)
 test_x = scaler.transform(test_x)
 ```
+
 ## 2-3. 데이터 정규화 - StandardScaler
 ```
 from sklearn.preprocessing import StandardScaler
@@ -75,7 +76,7 @@ train_x = scaler.fit_transform(train_x)
 test_x = scaler.transform(test_x)
 ```
 
-## 2-4. 머신러닝 모델 - 랜덤포레스트 분류기
+## 2-4. 머신러닝 모델 - 분류 : 랜덤포레스트 분류기
 ```
 from sklearn.ensemble import RandomForestClassifier
 
@@ -83,7 +84,8 @@ model = RandomForestClassifier(random_state=123)
 model.fit(train_x, train_y)
 pred_y = model.predict(test_x)
 ```
-## 2-5. 머신러닝 모델 - 로지스틱 회귀
+
+## 2-5. 머신러닝 모델 - 분류 : 로지스틱 회귀
 ```
 from sklearn.linear_model import LogisticRegression
 
@@ -91,6 +93,38 @@ model = LogisticRegression()
 model.fit(train_x, train_y)
 pred_y = model.predict(test_x)
 ```
+
+## 2-6. 머신러닝 모델 - 분류 : K-Nearest Neighbor
+```
+from sklearn.neighbors import KNeighborsClassifier
+
+model = KNeighborsClassifier(n_neighbors=5)
+model.fit(train_x, train_y)
+pred_y = model.predict(test_x)
+```
+
+## 2-7. 머신러닝 모델 - 분류 : DecisionTree
+```
+from sklearn.tree import DecisionTreeClassifier
+
+model = DecisionTreeClassifier(randon_state=42)
+model.fit(train_x, train_y)
+pred_y = model.predict(test_x)
+```
+
+## 2-8. 머신러닝 모델 - 분류 : xgboost
+```
+pip install xgboost
+```
+
+```
+from xgboost import XGBClassifier
+
+model = XGBClassifier(n_estimators=3, random_state=42) 
+model.fit(train_x, train_y)
+pred_y = model.predict(test_x)
+```
+
 
 # 4. Tensorflow(Keras)
 
@@ -114,6 +148,7 @@ model.compile(loss='mse',
               metrics=['mae'])      
 model.summary()
 ```
+
 ## 4-2. 딥러닝 모델 - 심층신경망 만들기(이진 분류 모델)
 ```
 from tensorflow.keras.models import Sequential
@@ -134,6 +169,7 @@ model.compile(loss='binary_crossentropy',
               metrics=['accuracy'])      
 model.summary()
 ```
+
 ## 4-3. 딥러닝 모델 - 심층신경망 만들기(다중 분류 모델)
 ```
 from tensorflow.keras.models import Sequential
