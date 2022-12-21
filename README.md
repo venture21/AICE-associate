@@ -105,6 +105,10 @@ plt.xlabel('Predict')
 plt.ylabel('Actual')
 plt.show()
 ```
+## 2-4-3 머신러닝 모델 - classification_report로 성능 확인하기
+```python
+classification_report(y_true, y_pred, target_names=target_names)
+```
 
 ## 2-5. 머신러닝 모델 - 분류 : 로지스틱 회귀
 ```python
@@ -248,7 +252,7 @@ check_point = ModelCheckpoint('best_model.h5', monitor='val_loss', mode='min', s
 callbacks = [early_stop, check_point]
 ```
 
-## 4-5 딥러넝 모델 - 학습
+## 4-5. 딥러닝 모델 - 학습
 ```python
 history = model.fit(x=X_train, y=y_train, epochs=50 , batch_size=20,
           validation_data=(X_test, y_test), verbose=1, callbacks=callbacks)
@@ -265,10 +269,3 @@ plt.ylabel('Acc')
 plt.legend(['acc', 'val_acc'])
 plt.show()
 ```
-
-
-
-
-
-
-
