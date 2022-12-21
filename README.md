@@ -117,7 +117,7 @@ pred_y = model.predict(test_x)
 pip install xgboost
 ```
 
-```
+```python
 from xgboost import XGBClassifier
 
 model = XGBClassifier(n_estimators=3, random_state=42) 
