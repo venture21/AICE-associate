@@ -1,6 +1,6 @@
 # 0. Python
 ## 0-1. 패키지 설치하기
-```
+```bash
 pip install [패키지명]
 ```
 
@@ -147,7 +147,7 @@ pred_y = model.predict(test_x)
 ```
 
 ## 2-9. 머신러닝 모델 - 분류 : xgboost
-```python
+```bash
 pip install xgboost
 ```
 
@@ -160,7 +160,7 @@ pred_y = model.predict(test_x)
 ```
 
 ## 2-10. 머신러닝 모델 - 분류 : LGBM
-```
+```bash
 pip install lightgbm
 ```
 
