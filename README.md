@@ -84,6 +84,27 @@ model = RandomForestClassifier(random_state=123)
 model.fit(train_x, train_y)
 pred_y = model.predict(test_x)
 ```
+## 2-4-1 머신러닝 모델 - 성능 측정(accuracy, precision, recall, f1)
+```python
+from sklearn.metrics import confusion_matrix
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
+import seaborn as sns
+
+print(accuracy_score(test_y, pred_y))
+print(precision_score(test_y, pred_y))
+print(recall_score(test_y, pred_y))
+print(f1_score(test_y, pred_y))
+```
+## 2-4-2 머신러닝 모델 - confusion_matrix를 heatmap으로 출력하기
+```python
+data = confusion_matrix(test_y, pred_y)
+
+# seaborn으로  그려보자.
+sns.heatmap(data, annot=True, cmap='Reds')
+plt.xlabel('Predict')
+plt.ylabel('Actual')
+plt.show()
+```
 
 ## 2-5. 머신러닝 모델 - 분류 : 로지스틱 회귀
 ```python
@@ -112,7 +133,14 @@ model.fit(train_x, train_y)
 pred_y = model.predict(test_x)
 ```
 
-## 2-8. 머신러닝 모델 - 분류 : xgboost
+## 2-8. 머신러닝 모델 - 분류 : SGDClassifier
+```python
+model = SGDClassifier(random_state=123, learning_rate='optimal')
+model.fit(train_x, train_y)
+pred_y = model.predict(test_x)
+```
+
+## 2-9. 머신러닝 모델 - 분류 : xgboost
 ```python
 pip install xgboost
 ```
@@ -125,7 +153,7 @@ model.fit(train_x, train_y)
 pred_y = model.predict(test_x)
 ```
 
-## 2-9. 머신러닝 모델 - 분류 : LGBM
+## 2-10. 머신러닝 모델 - 분류 : LGBM
 ```
 pip install lightgbm
 ```
