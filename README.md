@@ -7,7 +7,7 @@ pip install [패키지명]
 # 1. Pandas 
 
 ## 1-1. csv파일 불러오기
-```
+```python
 import pandas as pd
 pd.read_csv('example.csv',sep=',')
 ```
