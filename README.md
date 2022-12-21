@@ -13,28 +13,28 @@ pd.read_csv('example.csv',sep=',')
 ```
 
 ## 1-2. 결측치 채우기
-```
+```python
 df.fillna('채울값', inplace=True)
 ```
 
 ## 1-3. 결측치가 있는 행 삭제하기
-```
+```python
 df.dropna(axis=0, inplace=True)
 ```
 
 ## 1-4. 특정 행 삭제하기
-```
+```python
 df.drop(삭제할 행 index, axis=0)
 ```
 
 ## 1-5. 특정 컬럼 삭제하기
-```
+```python
 df.drop(삭제할 컬럼명, axis=1)
 # 삭제할 컬럼이 여러 개일 경우 리스트 사용
 df.drop([컬럼명1,컬럼명2] axis=1)  
 ```
 ## 1-6 더미 변수 타입으로 변환(One-hot encoding)
-```
+```python
 pd.get_dummies(data=df, columns=['컬럼명'])
 ```
 
@@ -42,7 +42,7 @@ pd.get_dummies(data=df, columns=['컬럼명'])
 
 ## 2-1. 데이터셋 분할하기
 
-```
+```python
 from sklearn.model_selection import train_test_split
 
 # Feature데이터와 label데이터가 분리되어 있는 경우
@@ -59,7 +59,7 @@ train_x.shape, test_x.shape, train_y.shape, test_y.shape
 ```
 
 ## 2-2. 데이터 정규화 - MinMaxScaler
-```
+```python
 from sklearn.preprocessing import MinMaxScaler
 
 scaler = MinMaxScaler()
@@ -68,7 +68,7 @@ test_x = scaler.transform(test_x)
 ```
 
 ## 2-3. 데이터 정규화 - StandardScaler
-```
+```python
 from sklearn.preprocessing import StandardScaler
 
 scaler = StandardScaler()
@@ -77,7 +77,7 @@ test_x = scaler.transform(test_x)
 ```
 
 ## 2-4. 머신러닝 모델 - 분류 : 랜덤포레스트 분류기
-```
+```python
 from sklearn.ensemble import RandomForestClassifier
 
 model = RandomForestClassifier(random_state=123)
@@ -86,7 +86,7 @@ pred_y = model.predict(test_x)
 ```
 
 ## 2-5. 머신러닝 모델 - 분류 : 로지스틱 회귀
-```
+```python
 from sklearn.linear_model import LogisticRegression
 
 model = LogisticRegression()
@@ -95,7 +95,7 @@ pred_y = model.predict(test_x)
 ```
 
 ## 2-6. 머신러닝 모델 - 분류 : K-Nearest Neighbor
-```
+```python
 from sklearn.neighbors import KNeighborsClassifier
 
 model = KNeighborsClassifier(n_neighbors=5)
@@ -104,7 +104,7 @@ pred_y = model.predict(test_x)
 ```
 
 ## 2-7. 머신러닝 모델 - 분류 : DecisionTree
-```
+```python
 from sklearn.tree import DecisionTreeClassifier
 
 model = DecisionTreeClassifier(randon_state=42)
@@ -113,7 +113,7 @@ pred_y = model.predict(test_x)
 ```
 
 ## 2-8. 머신러닝 모델 - 분류 : xgboost
-```
+```python
 pip install xgboost
 ```
 
@@ -130,7 +130,7 @@ pred_y = model.predict(test_x)
 pip install lightgbm
 ```
 
-```
+```python
 from lightgbm import LGBMClassifier
 
 model = LGBMClassifier(n_estimators=3, random_state=42) 
@@ -142,7 +142,7 @@ pred_y = model.predict(test_x)
 # 4. Tensorflow(Keras)
 
 ## 4-1. 딥러닝 모델 - 심층신경망 만들기(회귀 모델)
-```
+```python
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
 from tensorflow.random import set_seed
@@ -163,7 +163,7 @@ model.summary()
 ```
 
 ## 4-2. 딥러닝 모델 - 심층신경망 만들기(이진 분류 모델)
-```
+```python
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
 from tensorflow.random import set_seed
@@ -184,7 +184,7 @@ model.summary()
 ```
 
 ## 4-3. 딥러닝 모델 - 심층신경망 만들기(다중 분류 모델)
-```
+```python
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
 from tensorflow.random import set_seed
@@ -207,7 +207,7 @@ model.summary()
 ```
 
 ## 4-4. 딥러닝 모델 - 콜백 함수 설정
-```
+```python
 from tensorflow.keras.callbacks import EarlyStopping, ModelCheckpoint
 
 # val_loss 모니터링해서 성능이 5epoch동안 val_loss가 낮아지지 않으면 조기 종료
@@ -221,14 +221,14 @@ callbacks = [early_stop, check_point]
 ```
 
 ## 4-5 딥러넝 모델 - 학습
-```
+```python
 history = model.fit(x=X_train, y=y_train, epochs=50 , batch_size=20,
           validation_data=(X_test, y_test), verbose=1, callbacks=callbacks)
 ```
 
 ## 4-6. 딥러닝 모델 - 성능 평가 - loss 그래프 그리기
 
-```
+```python
 plt.plot(history.history['accuracy'])
 plt.plot(history.history['val_accuracy'])
 plt.title('Accuracy')
