@@ -39,15 +39,43 @@ train_x, test_x, train_y, test_y = train_test_split(df.drop('label', axis=1), df
 # 데이터셋 분할 후, 분할된 데이터셋 확인
 train_x.shape, test_x.shape, train_y.shape, test_y.shape
 ```
-## 7. 머신러닝 모델 - 랜덤포레스트 분류기
+
+## 7. 데이터 정규화 - MinMaxScaler
+```
+from sklearn.preprocessing import MinMaxScaler
+
+scaler = MinMaxScaler()
+train_x = scaler.fit_transform(train_x)
+test_x = scaler.transform(test_x)
+```
+## 8. 데이터 정규화 - StandardScaler
+```
+from sklearn.preprocessing import StandardScaler
+
+scaler = StandardScaler()
+train_x = scaler.fit_transform(train_x)
+test_x = scaler.transform(test_x)
+```
+
+## 9. 머신러닝 모델 - 랜덤포레스트 분류기
 ```
 from sklearn.ensemble import RandomForestClassifier
 
 model = RandomForestClassifier(random_state=123)
 model.fit(train_x, train_y)
-pred_y = model.predict(test_y)
+pred_y = model.predict(test_x)
 ```
-## 8. 딥러닝 모델 - 심층신경망 만들기(회귀 모델)
+## 10. 머신러닝 모델 - 로지스틱 회귀
+```
+from sklearn.linear_model import LogisticRegression
+
+model = LogisticRegression()
+model.fit(train_x, train_y)
+pred_y = model.predict(test_x)
+```
+
+
+## 11. 딥러닝 모델 - 심층신경망 만들기(회귀 모델)
 ```
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
@@ -67,7 +95,7 @@ model.compile(loss='mse',
               metrics=['mae'])      
 model.summary()
 ```
-## 9. 딥러닝 모델 - 심층신경망 만들기(이진 분류 모델)
+## 12. 딥러닝 모델 - 심층신경망 만들기(이진 분류 모델)
 ```
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
@@ -87,7 +115,7 @@ model.compile(loss='binary_crossentropy',
               metrics=['accuracy'])      
 model.summary()
 ```
-## 10. 딥러닝 모델 - 심층신경망 만들기(다중 분류 모델)
+## 13. 딥러닝 모델 - 심층신경망 만들기(다중 분류 모델)
 ```
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
@@ -109,6 +137,8 @@ model.compile(loss='sparse_categorical_crossentropy',
               metrics=['accuracy'])      
 model.summary() 
 ```
+
+
 
 
 
