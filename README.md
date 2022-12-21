@@ -172,6 +172,49 @@ model.fit(train_x, train_y)
 pred_y = model.predict(test_x)
 ```
 
+## 2-11. 머신러닝 모델 - 회귀 : LinearRegression
+```python
+from sklearn.linear_model import LinearRegression
+
+model = LinearRegression()
+model.fit(train_x, train_y)
+pred_y = model.predict(test_x)
+```
+
+## 2-12. 머신러닝 모델 - 회귀 : RandomForestRegressor
+```python
+from sklearn.linear_model import RandomForestRegressor
+
+# 다차원 배열을 1차원 배열로 만들기
+train_y = train_y.to_numpy().flatten()
+
+model = RandomForestRegressor(n_estimators=10, random_state=42)
+model.fit(train_x, train_y)
+pred_y = model.predict(test_x)
+```
+
+## 2-13. 머신러닝 모델 - 회귀 : GradientBoostingRegressor
+```python
+# 다차원 배열을 1차원 배열로 만들기
+train_y = train_y.to_numpy().flatten()
+
+model = GradientBoostingRegressor(n_estimators=100,learning_rate=0.1,random_state=42)
+model.fit(train_x, train_y)
+pred_y = model.predict(test_x)
+```
+
+## 2-14. 머신러닝 모델 - 회귀 : XGBRegressor
+```python
+from xgboost import XGBRegressor as xgb
+
+# 다차원 배열을 1차원 배열로 만들기
+train_y = train_y.to_numpy().flatten()
+
+model = XGBRegressor(n_estimators=100,gamma=1,reg_lambda=5, reg_alpha=5,random_state=42)
+model.fit(train_x, train_y)
+pred_y = model.predict(test_x)
+```
+
 # 3. Matplotlib & Seaborn
 
 
