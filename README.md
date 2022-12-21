@@ -1,31 +1,35 @@
-## 1. csv파일 불러오기
+# 1. Pandas 
+
+## 1-1. csv파일 불러오기
 ```
 import pandas as pd
 pd.read_csv('example.csv',sep=',')
 ```
 
-## 2. 결측치 채우기
+## 1-2. 결측치 채우기
 ```
 df.fillna('채울값', inplace=True)
 ```
 
-## 3. 결측치가 있는 행 삭제하기
+## 1-3. 결측치가 있는 행 삭제하기
 ```
 df.dropna(axis=0, inplace=True)
 ```
 
-## 4. 특정 행 삭제하기
+## 1-4. 특정 행 삭제하기
 ```
 df.drop(삭제할 행 index, axis=0)
 ```
 
-## 5. 특정 컬럼 삭제하기
+## 1-5. 특정 컬럼 삭제하기
 ```
 df.drop(삭제할 컬럼명, axis=1)
 # 삭제할 컬럼이 여러 개일 경우 리스트 사용
 df.drop([컬럼명1,컬럼명2] axis=1)  
 ```
-## 6. 데이터셋 분할하기
+# 2. Scikit-learn
+
+## 2-1. 데이터셋 분할하기
 
 ```
 from sklearn.model_selection import train_test_split
@@ -40,7 +44,7 @@ train_x, test_x, train_y, test_y = train_test_split(df.drop('label', axis=1), df
 train_x.shape, test_x.shape, train_y.shape, test_y.shape
 ```
 
-## 7. 데이터 정규화 - MinMaxScaler
+## 2-2. 데이터 정규화 - MinMaxScaler
 ```
 from sklearn.preprocessing import MinMaxScaler
 
@@ -48,7 +52,7 @@ scaler = MinMaxScaler()
 train_x = scaler.fit_transform(train_x)
 test_x = scaler.transform(test_x)
 ```
-## 8. 데이터 정규화 - StandardScaler
+## 2-3. 데이터 정규화 - StandardScaler
 ```
 from sklearn.preprocessing import StandardScaler
 
@@ -57,7 +61,7 @@ train_x = scaler.fit_transform(train_x)
 test_x = scaler.transform(test_x)
 ```
 
-## 9. 머신러닝 모델 - 랜덤포레스트 분류기
+## 2-4. 머신러닝 모델 - 랜덤포레스트 분류기
 ```
 from sklearn.ensemble import RandomForestClassifier
 
@@ -65,7 +69,7 @@ model = RandomForestClassifier(random_state=123)
 model.fit(train_x, train_y)
 pred_y = model.predict(test_x)
 ```
-## 10. 머신러닝 모델 - 로지스틱 회귀
+## 2-5. 머신러닝 모델 - 로지스틱 회귀
 ```
 from sklearn.linear_model import LogisticRegression
 
@@ -74,8 +78,7 @@ model.fit(train_x, train_y)
 pred_y = model.predict(test_x)
 ```
 
-
-## 11. 딥러닝 모델 - 심층신경망 만들기(회귀 모델)
+## 4-1. 딥러닝 모델 - 심층신경망 만들기(회귀 모델)
 ```
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
@@ -95,7 +98,7 @@ model.compile(loss='mse',
               metrics=['mae'])      
 model.summary()
 ```
-## 12. 딥러닝 모델 - 심층신경망 만들기(이진 분류 모델)
+## 4-2. 딥러닝 모델 - 심층신경망 만들기(이진 분류 모델)
 ```
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
@@ -115,7 +118,7 @@ model.compile(loss='binary_crossentropy',
               metrics=['accuracy'])      
 model.summary()
 ```
-## 13. 딥러닝 모델 - 심층신경망 만들기(다중 분류 모델)
+## 4-3. 딥러닝 모델 - 심층신경망 만들기(다중 분류 모델)
 ```
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
