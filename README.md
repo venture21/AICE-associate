@@ -78,6 +78,8 @@ model.fit(train_x, train_y)
 pred_y = model.predict(test_x)
 ```
 
+# 4. Tensorflow(Keras)
+
 ## 4-1. 딥러닝 모델 - 심층신경망 만들기(회귀 모델)
 ```
 from tensorflow.keras.models import Sequential
