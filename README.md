@@ -27,6 +27,11 @@ df.drop(삭제할 컬럼명, axis=1)
 # 삭제할 컬럼이 여러 개일 경우 리스트 사용
 df.drop([컬럼명1,컬럼명2] axis=1)  
 ```
+## 1-6 더미 변수 타입으로 변환(One-hot encoding)
+```
+pd.get_dummies(data=df, columns=['MultipleLines'])
+```
+
 # 2. Scikit-learn
 
 ## 2-1. 데이터셋 분할하기
