@@ -107,6 +107,8 @@ plt.show()
 ```
 ## 2-4-3 머신러닝 모델 - classification_report로 성능 확인하기
 ```python
+from sklearn.metrics import classification_report
+
 classification_report(y_true, y_pred, target_names=target_names)
 ```
 
