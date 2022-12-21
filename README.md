@@ -1,3 +1,9 @@
+# 0. Python
+## 0-1. 패키지 설치하기
+```
+pip install [패키지명]
+```
+
 # 1. Pandas 
 
 ## 1-1. csv파일 불러오기
@@ -29,7 +35,7 @@ df.drop([컬럼명1,컬럼명2] axis=1)
 ```
 ## 1-6 더미 변수 타입으로 변환(One-hot encoding)
 ```
-pd.get_dummies(data=df, columns=['MultipleLines'])
+pd.get_dummies(data=df, columns=['컬럼명'])
 ```
 
 # 2. Scikit-learn
@@ -44,6 +50,9 @@ train_x, test_x, train_y, test_y = train_test_split(df_x, df_y, test_size=0.2, r
 
 # Feature데이터와 label데이터가 하나의 데이터프레임에 같이 있는 경우
 train_x, test_x, train_y, test_y = train_test_split(df.drop('label', axis=1), df['label'], test_size=0.2, random_state=42)
+
+# Feature데이터와 label데이터가 하나의 데이터프레임에 같이 있는 경우, (레이블까지 고려하여) 데이터셋 균등하게 나누기
+train_x, test_x, train_y, test_y = train_test_split(df.drop('label', axis=1), df['label'], test_size=0.2, **stratify=df['label']**, random_state=42)
 
 # 데이터셋 분할 후, 분할된 데이터셋 확인
 train_x.shape, test_x.shape, train_y.shape, test_y.shape
