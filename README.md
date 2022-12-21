@@ -206,7 +206,27 @@ model.compile(loss='sparse_categorical_crossentropy',
 model.summary() 
 ```
 
-## 4-4 딥러닝 모델 성능 평가 - loss 그래프 그리기
+## 4-4. 딥러닝 모델 - 콜백 함수 설정
+```
+from tensorflow.keras.callbacks import EarlyStopping, ModelCheckpoint
+
+# val_loss 모니터링해서 성능이 5epoch동안 val_loss가 낮아지지 않으면 조기 종료
+early_stop = EarlyStopping(monitor='val_loss', mode='min', patience=5)
+
+# val_loss 가장 낮은 값을 가질때마다 모델저장
+check_point = ModelCheckpoint('best_model.h5', monitor='val_loss', mode='min', save_best_only=True)
+
+# fit()함수의 callbacks에 전달할 리스트
+callbacks = [early_stop, check_point]
+```
+
+## 4-5 딥러넝 모델 - 학습
+```
+history = model.fit(x=X_train, y=y_train, epochs=50 , batch_size=20,
+          validation_data=(X_test, y_test), verbose=1, callbacks=callbacks)
+```
+
+## 4-6. 딥러닝 모델 - 성능 평가 - loss 그래프 그리기
 
 ```
 plt.plot(history.history['accuracy'])
