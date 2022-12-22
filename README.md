@@ -185,6 +185,7 @@ pred_y = model.predict(test_x)
 ```python
 from sklearn.linear_model import RandomForestRegressor
 
+# train_y가 Pandas 데이터프레임이거나, Pandas Series인 경우
 # 다차원 배열을 1차원 배열로 만들기
 train_y = train_y.to_numpy().flatten()
 
@@ -195,6 +196,8 @@ pred_y = model.predict(test_x)
 
 ## 2-13. 머신러닝 모델 - 회귀 : GradientBoostingRegressor
 ```python
+
+# train_y가 Pandas 데이터프레임이거나, Pandas Series인 경우
 # 다차원 배열을 1차원 배열로 만들기
 train_y = train_y.to_numpy().flatten()
 
@@ -207,6 +210,7 @@ pred_y = model.predict(test_x)
 ```python
 from xgboost import XGBRegressor as xgb
 
+# train_y가 Pandas 데이터프레임이거나, Pandas Series인 경우
 # 다차원 배열을 1차원 배열로 만들기
 train_y = train_y.to_numpy().flatten()
 
@@ -227,6 +231,7 @@ import time
 
 model_list=[linearModel(), randomForest(), GradientBoosting(), XGB()]
 
+# train_y가 Pandas 데이터프레임이거나, Pandas Series인 경우
 # 다차원 배열을 1차원 배열로 만들기
 train_y = train_y.to_numpy().flatten()
 
