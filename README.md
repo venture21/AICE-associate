@@ -229,7 +229,7 @@ from xgboost import XGBRegressor as xgb
 import joblib
 import time
 
-model_list=[linearModel(), randomForest(), GradientBoosting(), XGB()]
+model_list=[lr(), rfr(), grb(), xgb()]
 
 # train_y가 Pandas 데이터프레임이거나, Pandas Series인 경우
 # 다차원 배열을 1차원 배열로 만들기
