@@ -247,9 +247,9 @@ for i in range(len(model_list)):
 # 개별 모델들을 Tuple타입으로 리스트에 넣고
 voting_models = [
     ('linear_reg', model_rslt[0]), 
-    ('ridge', model_rslt[1]), 
-    ('lasso', model_rslt[2]), 
-    ('elasticnet_pipeline', model_rslt[3])
+    ('randForest', model_rslt[1]), 
+    ('gradBoost', model_rslt[2]), 
+    ('xgboost', model_rslt[3])
 ]
 
 # VotingRegressor를 하나의 모델을 학습 하듯이 학습하고 추론한다.
