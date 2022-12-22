@@ -222,9 +222,10 @@ pred_y = model.predict(test_x)
 ## 2-15. 머신러닝 모델 - 회귀 : Voting Ensemble Model
 ```python
 from sklearn.linear_model import LinearRegression as lr
+from xgboost import XGBRegressor as xgb
 from sklearn.ensemble import RandomForestRegressor as rfr
 from sklearn.ensemble import GradientBoostingRegressor as grb
-from xgboost import XGBRegressor as xgb
+from sklearn.ensemble import VotingRegressor
 
 import joblib
 import time
@@ -235,12 +236,26 @@ model_list=[lr(), rfr(), grb(), xgb()]
 # 다차원 배열을 1차원 배열로 만들기
 train_y = train_y.to_numpy().flatten()
 
+# 개별 모델들을 학습한 후에 모델을 저장한다.
 model_result = []
 for i in range(len(model_list)):
     model = model_list[i]
     model.fit(train_x, train_y)
     pred_y = model.predict(test_x)
     model_result.append(model)
+
+# 개별 모델들을 Tuple타입으로 리스트에 넣고
+voting_models = [
+    ('linear_reg', model_rslt[0]), 
+    ('ridge', model_rslt[1]), 
+    ('lasso', model_rslt[2]), 
+    ('elasticnet_pipeline', model_rslt[3])
+]
+
+# VotingRegressor를 하나의 모델을 학습 하듯이 학습하고 추론한다.
+voting_regressor = VotingRegressor(voting_models, n_jobs=-1)
+voting_regressor.fit(train_x, train_y)
+pred_y = voting_regressor.predict(test_x)    
 ```
 
 # 3. Matplotlib & Seaborn
