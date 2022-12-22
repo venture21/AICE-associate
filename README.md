@@ -334,7 +334,7 @@ model.summary()
 from tensorflow.keras.callbacks import EarlyStopping, ModelCheckpoint
 
 # val_loss 모니터링해서 성능이 5epoch동안 val_loss가 낮아지지 않으면 조기 종료
-early_stop = EarlyStopping(monitor='val_loss', mode='min', patience=5)
+early_stop = EarlyStopping(monitor='val_loss', mode='min', patience=5, restore_best_weights=True)
 
 # val_loss 가장 낮은 값을 가질때마다 모델저장
 check_point = ModelCheckpoint('best_model.h5', monitor='val_loss', mode='min', save_best_only=True)
