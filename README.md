@@ -5,4 +5,4 @@
 예제 4. 스페이스 타이타닉 생존자 예측 - 분류
 
 노트 정리
-[요약노트](https://github.com/venture21/AICE-associate/AICE_associatesummaryNote.ipynb)
+[요약노트](https://github.com/venture21/AICE-associate/blob/main/AICE_associatesummaryNote.ipynb)
