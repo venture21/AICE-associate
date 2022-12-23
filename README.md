@@ -4,5 +4,5 @@
 [예제 3. 타이타닉 생존자 예측 - 분류](https://github.com/venture21/AICE-associate/blob/main/%EC%98%88%EC%A0%9C3.Titanic%EC%83%9D%EC%A1%B4%EC%9E%90%EC%98%88%EC%B8%A1-%EB%B6%84%EB%A5%98.ipynb) <br><br>
 [예제 4. 스페이스 타이타닉 생존자 예측 - 분류](https://github.com/venture21/AICE-associate/blob/main/%EC%98%88%EC%A0%9C4.SpaceTitanic%EC%83%9D%EC%A1%B4%EC%9E%90%EC%98%88%EC%B8%A1-%EB%B6%84%EB%A5%98.ipynb) <br><br>
 
-노트 정리 <br>
+## 노트 정리 <br>
 [요약노트 : AICE_associatesummaryNote.ipynb](https://github.com/venture21/AICE-associate/blob/main/AICE_associatesummaryNote.ipynb)
