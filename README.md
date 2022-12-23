@@ -293,11 +293,12 @@ from tensorflow.random import set_seed
 
 set_seed(100)
 
+# col_num이 8이라면
 col_num = train_x.shape[1]
 
 model = Sequential()
-model.add(Dense(64, activation='relu', input_shape=(col_num,)))
-model.add(Dense(64, activation='relu'))
+model.add(Dense(6, activation='relu', input_shape=(col_num,)))
+model.add(Dense(6, activation='relu'))
 model.add(Dense(1, activation='sigmoid'))
 
 model.compile(loss='binary_crossentropy',
